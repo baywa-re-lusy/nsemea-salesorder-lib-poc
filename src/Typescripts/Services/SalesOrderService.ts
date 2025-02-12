@@ -14,6 +14,7 @@ export class SalesOrderService {
     const headerSubsidiary = so.subsidiary;
     so.item.entries.forEach((item: SalesOrderItemSublist) => {
       item.ignoreFieldChange = true;
+      item.forceSyncSourcing = false
       item.inventorylocation = headerLocation;
       so.item.commitLine();
     });
