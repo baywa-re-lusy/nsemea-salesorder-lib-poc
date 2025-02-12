@@ -13,8 +13,9 @@ export class SalesOrderService {
     const headerLocation  = so.location;
     const headerSubsidiary = so.subsidiary;
     so.item.entries.forEach((item: SalesOrderItemSublist) => {
+      item.ignoreFieldChange = true;
       item.inventorylocation = headerLocation;
-      item.inventorysubsidiary = headerSubsidiary;
+      so.item.commitLine();
     });
   }
 
