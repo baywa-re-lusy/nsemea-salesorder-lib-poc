@@ -37,10 +37,7 @@ export class SalesOrderService {
     const currIndex = so.item.getCurrentSublistIndex();
     const headerLocation = so.location;
 
-    if (currIndex) {
-      so.item[currIndex].inventorylocation = headerLocation;
-    }
-
+    so.item[currIndex].inventorylocation = headerLocation;
     return `Inventory location ${headerLocation} was set on line index ${currIndex}`;
   }
 }
