@@ -10,8 +10,11 @@ export class SalesOrderService {
    * @param so Sales order instance representing the related transaction
    */
   setFulfillmentLocationOnItemLines(so: SalesOrder) {
+    const headerLocation  = so.location;
+    const headerSubsidiary = so.subsidiary;
     so.item.entries.forEach((item: SalesOrderItemSublist) => {
-      item.inventorylocation = so.location;
+      item.inventorylocation = headerLocation;
+      item.inventorysubsidiary = headerSubsidiary;
     });
   }
 
@@ -22,6 +25,9 @@ export class SalesOrderService {
    */
   setFulfillmentLocationOnCurrentItemLine(so: SalesOrder) {
     const currIndex = so.item.getCurrentSublistIndex();
-    so.item[currIndex].inventorylocation = so.location;
+    const headerLocation  = so.location;
+    const headerSubsidiary = so.subsidiary;
+    so.item[currIndex].inventorylocation = headerLocation;
+    so.item[currIndex].inventorysubsidiary = headerSubsidiary;
   }
 }
