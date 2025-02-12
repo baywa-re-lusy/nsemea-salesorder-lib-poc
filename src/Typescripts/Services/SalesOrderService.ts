@@ -36,15 +36,11 @@ export class SalesOrderService {
   setFulfillmentLocationOnCurrentItemLine(so: SalesOrder) {
     const currIndex = so.item.getCurrentSublistIndex();
     const headerLocation = so.location;
-    const headerSubsidiary = so.subsidiary;
-
-    log.debug('SalesOrderService : setFulfillmentLocationOnCurrentItemLine', `current index : ${currIndex}`);
-    log.debug('SalesOrderService : setFulfillmentLocationOnCurrentItemLine', `header location: ${headerLocation}`);
-    log.debug('SalesOrderService : setFulfillmentLocationOnCurrentItemLine', `header subsidiary: ${headerSubsidiary}`);
 
     if (currIndex) {
       so.item[currIndex].inventorylocation = headerLocation;
-      so.item[currIndex].inventorysubsidiary = headerSubsidiary;
     }
+
+    return `Inventory location ${headerLocation} was set on line index ${currIndex}`;
   }
 }
