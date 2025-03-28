@@ -13,7 +13,7 @@ import {
   NSSubList,
   SubListFieldTypeDecorator,
 } from '../Core/DataAccess/NSSubList';
-import { AddressBase } from '../Core/DataAccess/AddressBase';
+import { Address } from './Address';
 import { NSSubListLine } from '../Core/DataAccess/NSSubListLine';
 
 /**
@@ -292,8 +292,8 @@ export class SalesOrderBase extends TransactionBase {
   @FieldTypeDecorator()
   accessor billaddresslist: number;
 
-  @SubRecordDecorator(AddressBase)
-  accessor billingaddress: AddressBase;
+  @SubRecordDecorator(Address)
+  accessor billingaddress: Address;
 
   @FieldTypeDecorator()
   accessor billingschedule: number;
@@ -598,8 +598,8 @@ export class SalesOrderBase extends TransactionBase {
   @FieldTypeDecorator()
   accessor shipoverride: string;
 
-  @SubRecordDecorator(AddressBase)
-  accessor shippingaddress: AddressBase;
+  @SubRecordDecorator(Address)
+  accessor shippingaddress: Address;
 
   @FieldTypeDecorator()
   accessor shippingcost: number;
